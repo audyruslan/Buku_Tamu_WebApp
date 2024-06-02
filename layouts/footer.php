@@ -8,8 +8,7 @@
   </footer>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">z
           <div class="modal-content">
               <div class="modal-header">
@@ -61,8 +60,6 @@
   <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
   <!-- Sweetalert -->
   <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
   <!-- FLOT CHARTS -->
@@ -79,92 +76,103 @@
   <?php
     if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
     ?>
-  <script>
-Swal.fire({
-    title: '<?= $_SESSION['status'];  ?>',
-    icon: '<?= $_SESSION['status_icon'];  ?>',
-    text: '<?= $_SESSION['status_info'];  ?>'
-});
-  </script>
+      <script>
+          Swal.fire({
+              title: '<?= $_SESSION['status'];  ?>',
+              icon: '<?= $_SESSION['status_icon'];  ?>',
+              text: '<?= $_SESSION['status_info'];  ?>'
+          });
+      </script>
   <?php
         unset($_SESSION['status']);
     }
     ?>
   <script>
-$(function() {
+      $(function() {
 
-    // DataTable
-    $("#dataTable").DataTable();
+          // DataTable
+          $("#dataTable").DataTable({
+              "paging": true,
+              "lengthChange": true,
+              "searching": true,
+              "ordering": true,
+              "info": true,
+              "autoWidth": false,
+              "responsive": true,
+              "language": {
+                  url: 'assets/json/id.json'
+              }
+          });
 
-    // Hapus Admin
-    $(document).on('click', '.hapus_admin', function(e) {
+          // Hapus Admin
+          $(document).on('click', '.hapus_admin', function(e) {
 
-        e.preventDefault();
-        var href = $(this).attr('href');
+              e.preventDefault();
+              var href = $(this).attr('href');
 
-        Swal.fire({
-            title: 'Apakah Anda Yakin?',
-            text: "Data Admin!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Hapus Data!'
-        }).then((result) => {
-            if (result.value) {
-                document.location.href = href;
-            }
+              Swal.fire({
+                  title: 'Apakah Anda Yakin?',
+                  text: "Data Admin!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Hapus Data!'
+              }).then((result) => {
+                  if (result.value) {
+                      document.location.href = href;
+                  }
 
-        })
+              })
 
-    });
+          });
 
-    // Hapus Keperluan
-    $(document).on('click', '.hapus_keperluan', function(e) {
+          // Hapus Keperluan
+          $(document).on('click', '.hapus_keperluan', function(e) {
 
-        e.preventDefault();
-        var href = $(this).attr('href');
+              e.preventDefault();
+              var href = $(this).attr('href');
 
-        Swal.fire({
-            title: 'Apakah Anda Yakin?',
-            text: "Data Keperluan!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Hapus Data!'
-        }).then((result) => {
-            if (result.value) {
-                document.location.href = href;
-            }
+              Swal.fire({
+                  title: 'Apakah Anda Yakin?',
+                  text: "Data Keperluan!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Hapus Data!'
+              }).then((result) => {
+                  if (result.value) {
+                      document.location.href = href;
+                  }
 
-        })
+              })
 
-    });
+          });
 
-    // Hapus Pegawai
-    $(document).on('click', '.hapus_pegawai', function(e) {
+          // Hapus Pegawai
+          $(document).on('click', '.hapus_pegawai', function(e) {
 
-        e.preventDefault();
-        var href = $(this).attr('href');
+              e.preventDefault();
+              var href = $(this).attr('href');
 
-        Swal.fire({
-            title: 'Apakah Anda Yakin?',
-            text: "Data Pegawai!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Hapus Data!'
-        }).then((result) => {
-            if (result.value) {
-                document.location.href = href;
-            }
+              Swal.fire({
+                  title: 'Apakah Anda Yakin?',
+                  text: "Data Pegawai!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Hapus Data!'
+              }).then((result) => {
+                  if (result.value) {
+                      document.location.href = href;
+                  }
 
-        })
+              })
 
-    });
-});
+          });
+      });
   </script>
   </body>
 
